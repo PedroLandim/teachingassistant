@@ -1,8 +1,8 @@
 export class Aluno {
-    nome: string;
-    cpf: string;
-    email: string;
-    metas: Map<string,string>;
+    nome!: string;
+    cpf!: string;
+    email!: string;
+    metas!: Map<string,string> | any;
   
     constructor() {
       this.clean();
@@ -17,7 +17,7 @@ export class Aluno {
 
     clone(): Aluno {
         var aluno: Aluno = new Aluno();
-        aluno.metas = new Map<string,string>();
+        
         aluno.copyFrom(this);
     return aluno;
   }
@@ -29,7 +29,7 @@ export class Aluno {
     this.copyMetasFrom(from.metas);
   }
 
-  copyMetasFrom(from: Map<string,string>): void {
+  copyMetasFrom(from: Map<string,string> | any): void {
     this.metas = new Map<string,string>();
     for (let key in from) {
       this.metas[key] = from[key];
